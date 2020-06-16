@@ -1,0 +1,11 @@
+<td><img [src]="detail.avatar" alt=""></td>
+<td><span>{{ detail.id }}</span></td>
+<td><span *ngIf="!editing">{{ detail.email }}</span><input *ngIf="editing" type="text" [(ngModel)]="email" value="{{ detail.email }}"></td>
+<td><span *ngIf="!editing">{{ detail.first_name }}</span><input *ngIf="editing" type="text" [(ngModel)]="first_name" value="{{ detail.first_name }}"></td>
+<td><span *ngIf="!editing">{{ detail.last_name }}</span><input *ngIf="editing" type="text" [(ngModel)]="last_name" value="{{ detail.last_name }}"></td>
+<td>
+  <a class="btn btn-info" routerLink="/users/{{ detail.id }}">View</a>
+  <button *ngIf="!editing" class="btn btn-primary" (click)="toggleUpdate($event)">Update</button>
+  <button *ngIf="editing" class="btn btn-success" (click)="onSave()">Save</button>
+  <button class="btn btn-danger" (click)="onDelete($event)">Delete</button>
+</td>

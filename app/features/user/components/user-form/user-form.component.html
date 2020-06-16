@@ -1,0 +1,36 @@
+<section class="user-form">
+  <div class="container">
+    <form #form="ngForm" autocomplete="off" novalidate>
+      <div class="row">
+        <input type="hidden" name="id" [ngModel]="detail?.id" #id="ngModel">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Email Address: </label>
+            <input type="email" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [ngModel]="detail?.email" class="form-control" #email="ngModel" autocomplete="off" required>
+            <p class="error" *ngIf="email.errors?.required && email.dirty">Email Address is required</p>
+            <p class="error" *ngIf="email.errors?.pattern && email.dirty">Email Address is invalid</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>First Name: </label>
+            <input type="text" name="first_name" [ngModel]="detail?.first_name" class="form-control" #first_name="ngModel" autocomplete="off" required>
+            <p class="error" *ngIf="first_name.errors?.required && first_name.dirty">First Name is required</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Last Name: </label>
+            <input type="text" name="last_name" [ngModel]="detail?.last_name" class="form-control" #last_name="ngModel" autocomplete="off" required>
+            <p class="error" *ngIf="last_name.errors?.required && last_name.dirty">Last Name is required</p>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group text-right">
+            <button type="submit" class="btn btn-info" (click)="onSubmit(form.value, form.valid)" [disabled]="form.invalid">Update User</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

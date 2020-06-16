@@ -1,0 +1,23 @@
+<h3>User List</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>ID</th>
+      <th>Email</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      user-detail
+      *ngFor="let item of data;"
+      [detail]="item"
+      (delete)="handleDelete($event)"
+      (edit)="handleEdit($event)">
+    </tr>
+  </tbody>
+</table>
