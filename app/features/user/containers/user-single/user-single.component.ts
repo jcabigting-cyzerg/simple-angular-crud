@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../../user.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 import "rxjs/add/operator/switchMap";
 
@@ -24,6 +25,14 @@ export class UserSingleComponent implements OnInit {
   }
 
   handleUpdate(event) {
-    this.userService.updateUser(event).subscribe((data) => (this.user = data));
+    this.userService.updateUser(event).subscribe((data) => {
+      this.user = data;
+      Swal.fire({
+        type: "success",
+        icon: "success",
+        title: "SUCCESS!",
+        text: "The user has been updated.",
+      });
+    });
   }
 }
